@@ -1,0 +1,66 @@
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+
+sqlite> create table Faculty(fid integer,fname text,fsubject text,experience integer);
+sqlite> insert into Faculty values(666,'A Vanathi','CO',18);
+sqlite> insert into Faculty values(334,'K DeviPriya','Python',14);
+sqlite>  insert into Faculty values(678,'K N S L Kumar','CO',18);
+
+sqlite> select fname from Faculty;
+A Vanathi
+K DeviPriya
+K N S L Kumar
+sqlite> select fid from Faculty;
+666
+334
+678
+sqlite> select fsubject from Faculty;
+CO
+Python
+CO
+sqlite> select experience from Faculty;
+18
+14
+18
+
+sqlite> select *from Faculty;
+666|A Vanathi|CO|18
+334|K DeviPriya|Python|14
+678|K N S L Kumar|CO|18
+
+sqlite> insert into Faculty values(567,'Vydehi','Python',67);
+sqlite> select *from Faculty where fsubject='Python';
+334|K DeviPriya|Python|14
+567|Vydehi|Python|67
+
+sqlite> select *from Faculty where fid=666;
+666|A Vanathi|CO|18
+
+sqlite> select *from Faculty;
+666|A Vanathi|CO|18
+334|K DeviPriya|Python|14
+678|K N S L Kumar|CO|18
+567|Vydehi|Python|67
+
+#update
+sqlite> update Faculty set experience=17 where fid=567;
+sqlite> select *from Faculty;
+666|A Vanathi|CO|18
+334|K DeviPriya|Python|14
+678|K N S L Kumar|CO|18
+567|Vydehi|Python|17
+
+sqlite> update Faculty set fsubject='Java' where fid=334;
+sqlite> select *from Faculty;
+666|A Vanathi|CO|18
+334|K DeviPriya|Java|14
+678|K N S L Kumar|CO|18
+567|Vydehi|Python|17
+
+#delete
+sqlite> delete from Faculty where experience=18;
+sqlite> select *from Faculty;
+334|K DeviPriya|Java|14
+567|Vydehi|Python|17
